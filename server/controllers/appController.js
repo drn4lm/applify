@@ -1,5 +1,4 @@
 import Application from "../models/appModel.js";
-import User from "../models/userModel.js";
 
 export const create = async(req, res) => {
     try {
