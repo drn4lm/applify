@@ -1,7 +1,7 @@
 import express from "express";
 import { create } from "../controllers/appController.js";
 
-const appRoute = express.Router();
+const appRouter = express.Router();
 
-appRoute.post("/create", create);
-export default appRoute;
+appRouter.post("/create", create);
+export default appRouter;

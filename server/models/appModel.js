@@ -20,6 +20,11 @@ const appSchema = new mongoose.Schema({
     status:{
         type:String,
         required:true
+    },
+    userID:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "Users",
+        required:true
     }
 });
 
