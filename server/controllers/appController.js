@@ -1,4 +1,5 @@
 import Application from "../models/appModel.js";
+import User from "../models/userModel.js";
 
 export const create = async(req, res) => {
     try {
@@ -14,6 +15,17 @@ export const create = async(req, res) => {
         }
         const savedApp = await Application.create(req.body);
         res.status(200).json(savedApp);
+    } catch (error) {
+        res.status(500).json({errorMessage:error.message})
+    }
+};
+
+export const getUserApps = async(req, res) => {
+    try {
+        const userID = req.user.id;
+        const applications = await Application.find({ userID });
+
+        res.status(200).json(applications);
     } catch (error) {
         res.status(500).json({errorMessage:error.message})
     }
