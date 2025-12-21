@@ -2,7 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import route from "./routes/userRoute.js";
+import userRoute from "./routes/userRoute.js";
+import appRoute from "./routes/appRoute.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,4 +23,5 @@ mongoose
         .catch((error) => console.log(error));
 
 // Middleware
-app.use("/api", route);
+app.use("/api", userRoute);
+app.use("/api", appRoute);

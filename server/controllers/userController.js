@@ -1,6 +1,6 @@
 import User from "../models/userModel.js";
 
-export const create = async(req, res) => {
+export const register = async(req, res) => {
     try {
         const newUser = new User(req.body);
         const {email} = newUser;
@@ -14,4 +14,4 @@ export const create = async(req, res) => {
     } catch (error) {
         res.status(500).json({errorMessage:error.message})
     }
-}
+};
