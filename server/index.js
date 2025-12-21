@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import route from "./routes/userRoute.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,7 +16,10 @@ mongoose
         .then(() => {
             console.log("DB connection successful.")
             app.listen(PORT, () => {
-                console.log(`Server running on port: ${PORT}.`)
+                console.log(`Server running on port: ${PORT}.`);
             });
         })
         .catch((error) => console.log(error));
+
+// Middleware
+app.use("/api", route);
