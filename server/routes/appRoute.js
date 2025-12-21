@@ -1,7 +1,9 @@
 import express from "express";
-import { create } from "../controllers/appController.js";
+import { create, getUserApps } from "../controllers/appController.js";
+import { authMiddleware } from "../middleware/auth.js";
 
 const appRouter = express.Router();
 
-appRouter.post("/create", create);
+appRouter.post("/create", authMiddleware, create);
+appRouter.get("/me", authMiddleware, getUserApps);
 export default appRouter;
