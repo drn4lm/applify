@@ -3,9 +3,9 @@ import Application from "../models/appModel.js";
 export const create = async(req, res) => {
     try {
         const newApp = new Application(req.body);
-        const {jobID, position} = newApp;
+        const {userID, jobID, position} = newApp;
 
-        const appExists = await Application.findOne({jobID, position});
+        const appExists = await Application.findOne({userID, jobID, position,});
         if(appExists) {
             return res.status(409).json({
                 message: "An application with the same job ID and position name already exists.",
