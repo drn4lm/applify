@@ -12,7 +12,7 @@ export const register = async(req, res) => {
         const newUser = await User.create({ name, email, password });
         res.status(201).json({ _id: newUser._id, name: newUser.name, email: newUser.email });
     } catch (error) {
-        res.status(500).json({errorMessage:error.message})
+        res.status(500).json({ errorMessage:error.message })
     }
 };
 
@@ -33,8 +33,12 @@ export const login = async(req, res) => {
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         
-        res.status(200).json({ token, user: {id: user._id, name: user.name, email: user.email} });
+        res.status(200).json({ token, user: { id: user._id, name: user.name, email: user.email } });
     } catch (error) {
-        res.status(500).json({errorMessage:error.message})
+        res.status(500).json({ errorMessage:error.message })
     }
-}
+};
+
+export const logout = async(req, res) => {
+    res.status(200).json({ message: "Logged out." })
+};
