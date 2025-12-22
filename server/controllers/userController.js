@@ -40,6 +40,6 @@ export const login = async(req, res) => {
     }
 };
 
-export const logout = async(req, res) => {
+export const logout = async(res) => {
     res.status(200).json({ message: "Logged out." })
 };
