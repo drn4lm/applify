@@ -10,6 +10,7 @@ export const register = async(req, res) => {
             return res.status(400).json({message: "Email already exists."});
         }
         const newUser = await User.create({ name, email, password });
+        
         res.status(201).json({ _id: newUser._id, name: newUser.name, email: newUser.email });
     } catch (error) {
         res.status(500).json({ errorMessage:error.message })

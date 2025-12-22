@@ -13,6 +13,7 @@ export const create = async(req, res) => {
             });
         }
         const savedApp = await Application.create(req.body);
+        
         res.status(200).json(savedApp);
     } catch (error) {
         res.status(500).json({errorMessage:error.message})
