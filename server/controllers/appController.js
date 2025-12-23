@@ -51,3 +51,14 @@ export const editUserApp = async(req, res) => {
         res.status(500).json({ errorMessage:error.message });
     }
 };
+
+export const updateUserAppStatus = async(req, res) => {
+    try {
+        const { appID, status } = req.body;
+        const statusApp = await Application.findOneAndUpdate({ _id: appID, userID: req.user.id }, { status }, { new: true, runValidators: true });
+        
+        res.status(200).json(statusApp);
+    } catch (error) {
+        res.status(500).json({ errorMessage:error.message });
+    }
+};
