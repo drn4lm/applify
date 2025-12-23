@@ -9,6 +9,10 @@ const appSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    desc:{
+        type:String,
+        required:false
+    },
     jobID:{
         type:String,
         required:false
