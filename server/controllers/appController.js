@@ -44,6 +44,7 @@ export const delUserApp = async(req, res) => {
 
 export const editUserApp = async(req, res) => {
     try {
+        const { appID } = req.body;
         const allowedFields = ["jobID", "position", "company", "status", "date"];
         const updates = pickField(req.body, allowedFields);
         const updatedApp = await Application.findOneAndUpdate({ _id: appID, userID: req.user.id }, updates, { new: true, runValidators: true });
