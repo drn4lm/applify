@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+/*--AUTH: Middleware that protects auth routes by requiring a user-specific bearer token--*/
 export const authMiddleware = (req, res, next) => {
     const authHeader = req.headers.authorization;
 

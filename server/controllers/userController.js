@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
+/*--ENDPOINT: Create a new user in the DB--*/
 export const register = async(req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -17,6 +18,7 @@ export const register = async(req, res) => {
     }
 };
 
+/*--ENDPOINT: Login an existing user and assigning them a JWT--*/
 export const login = async(req, res) => {
     try {
         const { email, password } = req.body;
@@ -40,6 +42,7 @@ export const login = async(req, res) => {
     }
 };
 
+/*--ENDPOINT: Logout a client (client-side only)--*/
 export const logout = async(res) => {
     res.status(200).json({ message: "Logged out." })
 };

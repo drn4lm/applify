@@ -22,6 +22,6 @@ mongoose
         })
         .catch((error) => console.log(error));
 
-// API Middleware
+/*--API Middleware--*/
 app.use("/auth", userRouter);
 app.use("/application", appRouter);

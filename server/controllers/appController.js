@@ -1,6 +1,7 @@
 import Application from "../models/appModel.js";
 import { pickField } from "../utils/pickField.js";
 
+/*--ENDPOINT: Create user applications--*/
 export const makeUserApp = async(req, res) => {
     try {
         const { jobID, position } = req.body;
@@ -20,6 +21,7 @@ export const makeUserApp = async(req, res) => {
     }
 };
 
+/*--ENDPOINT: Retreive user applications--*/
 export const getUserApps = async(req, res) => {
     try {
         const userID = req.user.id;
@@ -31,6 +33,7 @@ export const getUserApps = async(req, res) => {
     }
 };
 
+/*--ENDPOINT: Delete user applications--*/
 export const delUserApp = async(req, res) => {
     try {
         const { appID } = req.body;
@@ -42,6 +45,7 @@ export const delUserApp = async(req, res) => {
     }
 };
 
+/*--ENDPOINT: Update individual fields of user applications--*/
 export const editUserApp = async(req, res) => {
     try {
         const { appID } = req.body;
