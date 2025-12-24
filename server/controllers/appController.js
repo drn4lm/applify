@@ -1,4 +1,5 @@
 import Application from "../models/appModel.js";
+import { pickField } from "../utils/pickField.js";
 
 export const makeUserApp = async(req, res) => {
     try {
@@ -43,21 +44,11 @@ export const delUserApp = async(req, res) => {
 
 export const editUserApp = async(req, res) => {
     try {
-        const { appID, ...updates } = req.body;
-        const editApp = await Application.findOneAndUpdate({ _id: appID, userID: req.user.id }, updates, { new: true, runValidators: true });
+        const allowedFields = ["jobID", "position", "company", "status", "date"];
+        const updates = pickField(req.body, allowedFields);
+        const updatedApp = await Application.findOneAndUpdate({ _id: appID, userID: req.user.id }, updates, { new: true, runValidators: true });
 
-        res.status(200).json(editApp);
-    } catch (error) {
-        res.status(500).json({ errorMessage:error.message });
-    }
-};
-
-export const updateUserAppStatus = async(req, res) => {
-    try {
-        const { appID, status } = req.body;
-        const statusApp = await Application.findOneAndUpdate({ _id: appID, userID: req.user.id }, { status }, { new: true, runValidators: true });
-        
-        res.status(200).json(statusApp);
+        res.status(200).json(updatedApp);
     } catch (error) {
         res.status(500).json({ errorMessage:error.message });
     }
